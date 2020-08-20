@@ -28,14 +28,15 @@
             handleSubmit(e){
                 e.preventDefault()
                 if (this.password.length > 0) {
-                    this.$http.post('https://chance-app.herokuapp.com/login', {
-                        MobileNum: this.password
+                    // this.$http.post('https://chance-app.herokuapp.com/login', {
+                    this.$http.post('http://localhost:8080/login', {
+                        Driver: { MobileNum: this.password }
                     })
                     .then(response => {
                         localStorage.setItem('user',JSON.stringify(response.data.user))
                         localStorage.setItem('jwt',response.data.token)
 
-                        if (localStorage.getItem('jwt') != null){
+                        if (localStorage.getItem('jwt') != ''){
                             this.$emit('loggedIn')
                             if(this.$route.params.nextUrl != null){
                                 this.$router.push(this.$route.params.nextUrl)
