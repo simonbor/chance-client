@@ -38,13 +38,13 @@ let router = new Router({
 
 router.beforeEach((to, from, next) => {
   if( to.matched.some(record => record.meta.requiresAuth) ) {
-      if (localStorage.getItem('jwt') == '') {
+      if (localStorage.getItem('jwt') == null) {
           next({
               path: '/login',
               params: { nextUrl: to.fullPath }
           })
       } else {
-          let user = JSON.parse(localStorage.getItem('user'))
+          //let user = JSON.parse(localStorage.getItem('user'))
           if(to.matched.some(record => record.meta.is_admin)) {
                 next({ name: 'userboard'})
           } else {
@@ -52,7 +52,7 @@ router.beforeEach((to, from, next) => {
           }
       }
   } else if(to.matched.some(record => record.meta.guest)) {
-      if(localStorage.getItem('jwt') == ''){
+      if(localStorage.getItem('jwt') == null){
           next()
       }
       else{
