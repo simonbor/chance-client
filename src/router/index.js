@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/Login'
 import UserBoard from '@/components/UserBoard'
+import HereMap from '@/components/HereMap'
+import HereMapLocations from '@/components/HereMapLocations'
 
 Vue.use(Router)
 
@@ -29,6 +31,22 @@ let router = new Router({
         path: '/dashboard',
         name: 'userboard',
         component: UserBoard,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/HereMap',
+        name: 'HereMap',
+        component: HereMap,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/HereMapLocations',
+        name: 'HereMapLocations',
+        component: HereMapLocations,
         meta: {
             requiresAuth: true
         }
