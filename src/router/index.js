@@ -5,6 +5,7 @@ import Login from '@/components/Login'
 import UserBoard from '@/components/UserBoard'
 import HereMap from '@/components/HereMap'
 import HereMapLocations from '@/components/HereMapLocations'
+import Parkings from '@/components/Parkings'
 
 Vue.use(Router)
 
@@ -47,6 +48,14 @@ let router = new Router({
         path: '/HereMapLocations',
         name: 'HereMapLocations',
         component: HereMapLocations,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/Parkings',
+        name: 'Parkings',
+        component: Parkings,
         meta: {
             requiresAuth: true
         }
