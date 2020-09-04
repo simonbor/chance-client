@@ -25,7 +25,8 @@ export default {
   // .then ((res)=> console.log (res.body))
   // .catch ((error)=> console.log(error)) 
 
-    const respone = await this.$http.post('https://chance-app.herokuapp.com/chance-list', {"Address": {"CityId": 1},	"Chance": {"DateStart": "7/8/2020, 11:28:42 AM"}});
+    const respone = await this.$http.post('https://chance-app.herokuapp.com/chance-list', {"Address": {"CityId": 1}});
+    //const respone = await this.$http.post('https://chance-app.herokuapp.com/chance-list', {"Address": {"CityId": 1},	"Chance": {"DateStart": "7/8/2020, 11:28:42 AM"}});
 
     const locations = [];
 
