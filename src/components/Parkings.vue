@@ -21,12 +21,8 @@ export default {
     });
     this.platform = platform;
 
-  //   this.$http.post('url', {something: "string"})
-  // .then ((res)=> console.log (res.body))
-  // .catch ((error)=> console.log(error)) 
-
     const respone = await this.$http.post('https://chance-app.herokuapp.com/chance-list', {"Address": {"CityId": 1}, "Chance": {}});
-    //const respone = await this.$http.post('https://chance-app.herokuapp.com/chance-list', {"Address": {"CityId": 1},	"Chance": {"DateStart": "7/8/2020, 11:28:42 AM"}});
+    // const respone = await this.$http.post('https://chance-app.herokuapp.com/chance-list', {"Address": {"CityId": 1},	"Chance": {"DateStart": "2020-09-07 17:00:00"}});
 
     const locations = [];
 
@@ -44,18 +40,28 @@ export default {
       const H = window.H;
       // Obtain the default map types from the platform object
       var maptypes = this.platform.createDefaultLayers();
+      maptypes.vector.normal.map.setMax(16.5);
 
       // Instantiate (and display) a map object:
       var map = new H.Map(mapContainer, maptypes.vector.normal.map, {
-          zoom: 15,
-        // center: this.center
+        zoom: 15,
         center: { lat: 32.0758, lng: 34.7722 }
       });
 
+      const markers = [];
+      const group = new H.map.Group();
       locations.map(loc => {
-        var parisMarker = new H.map.Marker(loc);
-        map.addObject(parisMarker);
+        markers.push(new H.map.Marker(loc));
       })
+
+      // add markers to the group
+      group.addObjects(markers);
+      map.addObject(group);
+
+      // get geo bounding box for the group and set it to the map ( centralizing )
+      map.getViewModel().setLookAtData({
+        bounds: group.getBoundingBox()
+      });
 
       addEventListener("resize", () => map.getViewPort().resize());
 
