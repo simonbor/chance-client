@@ -54,7 +54,7 @@ export default {
         const marker = new H.map.Marker(loc);
         const html = `<div class='chance'><span>Navigate with:</span><ul>
           <li><a href='//waze.com/ul?ll=${loc.lat},${loc.lng}&navigate=yes&zoom=9'>waze</a></li>
-          <li><a href='//maps.apple.com/maps?q=${loc.lat},${loc.lng}"'>apple maps</a></li>
+          <li><a href='//maps.apple.com/?ll=${loc.lat},${loc.lng}"'>apple maps</a></li>
           <li><a href='//maps.google.com/maps?q=${loc.lat},${loc.lng}'>google maps</a></li></dix>`;
 
         marker.setData(html);
