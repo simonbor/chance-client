@@ -40,7 +40,7 @@ export default {
       const H = window.H;
       // Obtain the default map types from the platform object
       var maptypes = this.platform.createDefaultLayers();
-      maptypes.vector.normal.map.setMax(16.5);
+      maptypes.vector.normal.map.setMax(19);
 
       // Instantiate (and display) a map object:
       var map = new H.Map(mapContainer, maptypes.vector.normal.map, {
