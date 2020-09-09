@@ -51,12 +51,27 @@ export default {
       const markers = [];
       const group = new H.map.Group();
       locations.map(loc => {
-        markers.push(new H.map.Marker(loc));
+        const marker = new H.map.Marker(loc);
+        const html = `<div class='chance'><span>Navigate with:</span><ul>
+          <li><a href='//waze.com/ul?ll=${loc.lat},${loc.lng}&navigate=yes&zoom=9'>waze</a></li>
+          <li><a href='//maps.apple.com/maps?q=${loc.lat},${loc.lng}"'>apple maps</a></li>
+          <li><a href='//maps.google.com/maps?q=${loc.lat},${loc.lng}'>google maps</a></li></dix>`;
+
+        marker.setData(html);
+        markers.push(marker);
       })
 
       // add markers to the group
       group.addObjects(markers);
       map.addObject(group);
+
+      group.addEventListener('tap', function (evt) {
+        var bubble =  new H.ui.InfoBubble(evt.target.getGeometry(), {
+          content: evt.target.getData()
+        });
+        ui.getBubbles().forEach(bub => ui.removeBubble(bub)); //remove other infobubbles       
+        ui.addBubble(bubble); // show info bubble
+      }, false);
 
       // get geo bounding box for the group and set it to the map ( centralizing )
       map.getViewModel().setLookAtData({
@@ -69,11 +84,20 @@ export default {
       new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
       // add UI
-      H.ui.UI.createDefault(map, maptypes);
+      const ui = H.ui.UI.createDefault(map, maptypes);
     }
   }
 };
 </script>
+
+<style>
+.chance { text-align: left; }
+.chance span { font-weight: bold; border-bottom-style: solid; border-width: 1px; border-bottom-color:rgba(15, 22, 23, .8); }
+ul { padding: 0; margin: 0; margin-top: 3px; list-style-type: none; line-height: 19px; }
+ul li { text-align: center; }
+ul li a { text-decoration: none; color: rgba(15, 22, 23, .8) }
+.H_ib_body { width: 140px; }
+</style>
 
 <style scoped>
 #map {
