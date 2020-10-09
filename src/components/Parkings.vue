@@ -25,8 +25,7 @@ export default {
     // const respone = await this.$http.post('https://chance-app.herokuapp.com/chance-list', {"Address": {"CityId": 1},	"Chance": {"DateStart": "2020-09-07 17:00:00"}});
 
     const locations = [];
-
-    respone.data.map(chance => {
+    respone.data.data.map(chance => {
       if (chance.Longitude != null && chance.Latitude != null) {
         locations.push({ lat: chance.Latitude, lng: chance.Longitude });
       }
