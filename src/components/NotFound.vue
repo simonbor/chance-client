@@ -1,18 +1,18 @@
 <template>
-    <div class="hello">
-        <h1>This is homepage</h1>
-        <h2>{{msg}}</h2>
+    <div>
+        <h1>
+            404
+        </h1>
+        <H2>
+            The page isn't found!!!
+        </H2>
     </div>
 </template>
 
 <script>
     export default {
-        data () {
-            return {
-                msg: 'Hello World!'
-            }
-        }
-    }
+    name: 'NotFound'
+    };
 </script>
 
 <style scoped>

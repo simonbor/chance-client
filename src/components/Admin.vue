@@ -1,6 +1,6 @@
 <template>
     <div class="hello">
-        <h1>This is homepage</h1>
+        <h1>Welcome to administrator page</h1>
         <h2>{{msg}}</h2>
     </div>
 </template>
@@ -9,12 +9,11 @@
     export default {
         data () {
             return {
-                msg: 'Hello World!'
+                msg: 'The superheros'
             }
         }
     }
 </script>
-
 <style scoped>
     h1, h2 {
         font-weight: normal;
@@ -31,3 +30,4 @@
         color: #42b983;
     }
 </style>
+

@@ -65,7 +65,14 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         ignore: ['.*']
       }
     ])
-  ]
+  ],
+  externals: {
+    // global app config object
+    config: JSON.stringify({
+      authUrl: 'http://localhost:3000',
+      apiUrl: 'http://localhost:8080'
+    })
+  }
 })
 
 module.exports = new Promise((resolve, reject) => {

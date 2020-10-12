@@ -6,8 +6,9 @@
 </template>
 
 <script>
+const config = require('config');
 export default {
-  name: "Parkings",
+  name: "Map",
   data() {
     return {
       platform: null,
@@ -21,11 +22,25 @@ export default {
     });
     this.platform = platform;
 
-    const respone = await this.$http.post('https://chance-app.herokuapp.com/chance-list', {"Address": {"CityId": 1}, "Chance": {}});
-    // const respone = await this.$http.post('https://chance-app.herokuapp.com/chance-list', {"Address": {"CityId": 1},	"Chance": {"DateStart": "2020-09-07 17:00:00"}});
+    const response = await fetch(`${config.apiUrl}/chance-list`,
+      {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+        },
+        // body: JSON.stringify({"Address": {"CityId": 1}, "Chance": {"DateStart": "2020-08-07 17:00:00"}})
+        body: JSON.stringify({"Address": {"CityId": 1}, "Chance": {}})
+      });
+    response.json = await response.json();
+
+    if(!response.ok && response.json.statusCode === 401) {
+      console.log(response.json.statusText);
+      this.logOff();
+    }
 
     const locations = [];
-    respone.data.data.map(chance => {
+    response.json.data.map(chance => {
       if (chance.Longitude != null && chance.Latitude != null) {
         locations.push({ lat: chance.Latitude, lng: chance.Longitude });
       }
@@ -60,22 +75,24 @@ export default {
         markers.push(marker);
       })
 
-      // add markers to the group
-      group.addObjects(markers);
-      map.addObject(group);
+      if(markers.length > 0) {  // prevent here map client error
+        // add markers to the group
+        group.addObjects(markers);
+        map.addObject(group);
 
-      group.addEventListener('tap', function (evt) {
-        var bubble =  new H.ui.InfoBubble(evt.target.getGeometry(), {
-          content: evt.target.getData()
+        group.addEventListener('tap', function (evt) {
+          var bubble =  new H.ui.InfoBubble(evt.target.getGeometry(), {
+            content: evt.target.getData()
+          });
+          ui.getBubbles().forEach(bub => ui.removeBubble(bub)); //remove other infobubbles
+          ui.addBubble(bubble); // show info bubble
+        }, false);
+
+        // get geo bounding box for the group and set it to the map ( centralizing )
+        map.getViewModel().setLookAtData({
+          bounds: group.getBoundingBox()
         });
-        ui.getBubbles().forEach(bub => ui.removeBubble(bub)); //remove other infobubbles       
-        ui.addBubble(bubble); // show info bubble
-      }, false);
-
-      // get geo bounding box for the group and set it to the map ( centralizing )
-      map.getViewModel().setLookAtData({
-        bounds: group.getBoundingBox()
-      });
+      }
 
       addEventListener("resize", () => map.getViewPort().resize());
 
