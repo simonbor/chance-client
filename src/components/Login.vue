@@ -54,7 +54,7 @@
         methods : {
             handleSubmit(e){
 
-                console.log("login button clicked!");
+                alert("login button clicked!");
 
                 e.preventDefault()
                 if (this.password.length > 0) {
