@@ -1,7 +1,7 @@
 
 <template>
   <div id="map">
-    <div id="mapContainer" style="height:600px;width:100%" ref="hereMap"></div>
+    <div id="mapContainer" ref="hereMap"></div>
   </div>
 </template>
 
@@ -106,21 +106,13 @@ export default {
 };
 </script>
 
-<style>
-.chance { text-align: left; }
-.chance span { font-weight: bold; border-bottom-style: solid; border-width: 1px; border-bottom-color:rgba(15, 22, 23, .8); }
-ul { padding: 0; margin: 0; margin-top: 3px; list-style-type: none; line-height: 19px; }
-ul li { text-align: center; }
-ul li a { text-decoration: none; color: rgba(15, 22, 23, .8) }
-.H_ib_body { width: 140px; }
-</style>
-
 <style scoped>
-#map {
-  width: 60vw;
-  min-width: 360px;
-  text-align: center;
-  margin: 5% auto;
-  background-color: #ccc;
-}
+  #map {
+    text-align: center;
+    margin: 10px auto;
+    background-color: #ccc;
+  }
+  #mapContainer {
+    height: 475px;
+  }
 </style>
