@@ -53,9 +53,6 @@
         },
         methods : {
             handleSubmit(e){
-
-                alert("login button clicked!");
-
                 e.preventDefault()
                 if (this.password.length > 0) {
 
