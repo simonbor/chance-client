@@ -1,14 +1,21 @@
 
 <template>
-  <div id="map">
-    <div id="mapContainer" ref="hereMap"></div>
+  <div>
+    <div id="map">
+      <div id="mapContainer" ref="hereMap"></div>
+    </div>
+    <MapButtons/>
   </div>
 </template>
 
 <script>
+import MapButtons from '@/components/MapButtons';
 const config = require('config');
 export default {
   name: "Map",
+   components: {
+    MapButtons
+  },
   data() {
     return {
       platform: null,
