@@ -51,7 +51,7 @@
         }
       })
     },
-    methods : {
+    methods: {
       signOut(e) {
         e.preventDefault();
 
