@@ -23,7 +23,7 @@ export default {
     methods: {
         async fiveMinutesGap (mins) {
             const secs = mins * 1000 * 60;
-            const dateStart = (new Date(Date.now() - secs)).toLocaleString("en-US");
+            const dateStart = (new Date(Date.now() - secs)).toISOString()
 
             const response = await fetch(`${config.apiUrl}/chance-list`,
             {
