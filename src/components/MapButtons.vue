@@ -41,14 +41,14 @@ export default {
               this.logOff();
             }
 
-            const locations = [];
             response.json.data.map(chance => {
                 if (chance.Longitude != null && chance.Latitude != null) {
-                    locations.push({ lat: chance.Latitude, lng: chance.Longitude });
+                    chance.lat = chance.Latitude;
+                    chance.lng = chance.Longitude;
                 }
             });
 
-            this.$emit('clicked', locations);
+            this.$emit('clicked', response.json.data);
         }
     }
 }
