@@ -1,13 +1,13 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="light" variant="light" fixed="top" >
-      <b-navbar-brand :to="{ name: 'HelloWorld' }">Home</b-navbar-brand>
+      <b-navbar-brand :to="{ name: 'Home' }">Home</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item :to="{ name: 'Map' }">Map</b-nav-item>
-          <b-nav-item :to="{ name: 'HelloWorld' }">About</b-nav-item>
+          <b-nav-item :to="{ name: 'About' }">About</b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->

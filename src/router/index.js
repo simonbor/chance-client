@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Home from '@/components/Home'
+import About from '@/components/About'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 import UserBoard from '@/components/UserBoard'
@@ -14,7 +15,8 @@ let router = new Router({
   mode: 'history',
   routes: [
     { path: '*', name: 'NotFound', component: NotFound },
-    { path: '/', name: 'HelloWorld', component: HelloWorld },
+    { path: '/', name: 'Home', component: Home },
+    { path: '/about', name: 'About', component: About },
     { path: '/login', name: 'Login', component: Login, meta: { guest: true } },
     { path: '/register', name: 'Register', component: Register, meta: { guest: true } },
     { path: '/dashboard', name: 'Userboard', component: UserBoard, meta: { requiresAuth: true } },
