@@ -69,6 +69,7 @@
         margin-bottom: 50px;
         border-radius: 8px;
         background-image: url(../assets/map.png);
+        background-position: center center;
     }
     .home {
         direction: rtl;
