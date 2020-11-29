@@ -86,7 +86,7 @@
                                     this.$router.push(this.$route.params.nextUrl)
                                 }
                                 else{
-                                    this.$router.push('/')
+                                    this.$router.push('/map')
                                 }
                             }
                         }

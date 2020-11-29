@@ -7,7 +7,7 @@
                 <p class="text">
                     בעזרת האפליקציה ניתן לעדכן זמן פינוי החניה וגם לראות על גבי המפה חניות שהתפנו לפני רגע או אלה שעומדות להתפנות בקרוב. אם כולנו יחד נעדכן פינויים נוכל לעזור אחד לשני</p>
                 <p>
-                    <a class="btn btn-secondary" href="#" role="button">עוד פרטים »</a>
+                    <b-link role="button" class="btn btn-secondary" :to="{ name: 'About' }">עוד פרטים »</b-link>
                 </p>
             </div>
 
@@ -21,7 +21,7 @@
                     </ul>
                 </p>
                 <p>
-                    <a class="btn btn-primary" href="#" role="button">לנסות »</a>
+                    <b-link class="btn btn-primary" :to="{ name: 'Register' }" role="button">לנסות »</b-link>
                 </p>
             </div>
 
@@ -30,7 +30,7 @@
                 <p class="text">
                     כל פעם כאשר נרצה לפנות חניה יש לכתוב כתובת החניה וזמן הפינוי בקבוצה של המערכת. לאחר שליחת ההודעה יופיע סמן על גבי מפת המערכת כך שמי שמעוניין לחנות יוכל לראות איפה ומתי הולכת להתפנות חניה</p>
                 <p>
-                    <a class="btn btn-secondary" href="#" role="button">עוד פרטים »</a>
+                    <b-link role="button" class="btn btn-secondary" :to="{ name: 'About' }">עוד פרטים »</b-link>
                 </p>
             </div>
         </div>
@@ -69,6 +69,7 @@
         margin-bottom: 50px;
         border-radius: 8px;
         background-image: url(../assets/map.png);
+        background-position: 50%;
     }
     .home {
         direction: rtl;
