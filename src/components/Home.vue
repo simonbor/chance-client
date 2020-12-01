@@ -12,7 +12,7 @@
             </div>
 
             <div class="col-md-4">
-                <h3>יתרונות המערכת!</h3>
+                <h3>יתרונות המערכת</h3>
                 <p class="text">
                     <ul>
                         <li>ניתן לראות על גבי המפה את מיקומם של החניות שמתפנות או אלה שעומדות להתפנה בקרוב</li>
@@ -21,7 +21,7 @@
                     </ul>
                 </p>
                 <p>
-                    <b-link class="btn btn-primary" :to="{ name: 'Register' }" role="button">לנסות »</b-link>
+                    <b-link class="btn btn-primary" :to="{ name: 'Register' }" role="button">להרשמה! »</b-link>
                 </p>
             </div>
 
@@ -33,6 +33,9 @@
                     <b-link role="button" class="btn btn-secondary" :to="{ name: 'About' }">עוד פרטים »</b-link>
                 </p>
             </div>
+        </div>
+        <div class="status">
+            <h3>*נכון לרגע זה ישנם חניות פנויות במערכת!</h3>
         </div>
         <hr>
     </div>
@@ -74,7 +77,10 @@
     .home {
         direction: rtl;
     }
-    .home p.text {
+    .home p.text, .status h3 {
         text-align: right;
+    }
+    .status {
+        display: none;
     }
 </style>
