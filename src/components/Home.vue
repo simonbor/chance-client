@@ -3,11 +3,11 @@
         <div class="map"></div>
         <div class="row">
             <div class="col-md-4">
-                <h3>שיתוף חניות בעזרת המפה</h3>
+                <h3>שיתוף חניות בעזרת המפה?</h3>
                 <p class="text">
                     בעזרת האפליקציה ניתן לעדכן זמן פינוי החניה וגם לראות על גבי המפה חניות שהתפנו לפני רגע או אלה שעומדות להתפנות בקרוב. אם כולנו יחד נעדכן פינויים נוכל לעזור אחד לשני</p>
                 <p>
-                    <a class="btn btn-secondary" href="#" role="button">עוד פרטים »</a>
+                    <b-link role="button" class="btn btn-secondary" :to="{ name: 'About' }">עוד פרטים »</b-link>
                 </p>
             </div>
 
@@ -21,18 +21,21 @@
                     </ul>
                 </p>
                 <p>
-                    <a class="btn btn-primary" href="#" role="button">לנסות »</a>
+                    <b-link class="btn btn-primary" :to="{ name: 'Register' }" role="button">להרשמה! »</b-link>
                 </p>
             </div>
 
             <div class="col-md-4">
-                <h3>איך זה עובד</h3>
+                <h3>איך זה עובד...</h3>
                 <p class="text">
                     כל פעם כאשר נרצה לפנות חניה יש לכתוב כתובת החניה וזמן הפינוי בקבוצה של המערכת. לאחר שליחת ההודעה יופיע סמן על גבי מפת המערכת כך שמי שמעוניין לחנות יוכל לראות איפה ומתי הולכת להתפנות חניה</p>
                 <p>
-                    <a class="btn btn-secondary" href="#" role="button">עוד פרטים »</a>
+                    <b-link role="button" class="btn btn-secondary" :to="{ name: 'About' }">עוד פרטים »</b-link>
                 </p>
             </div>
+        </div>
+        <div class="status">
+            <h3>*נכון לרגע זה ישנם חניות פנויות במערכת!</h3>
         </div>
         <hr>
     </div>
@@ -74,7 +77,10 @@
     .home {
         direction: rtl;
     }
-    .home p.text {
+    .home p.text, .status h3 {
         text-align: right;
+    }
+    .status {
+        display: none;
     }
 </style>
