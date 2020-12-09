@@ -34,8 +34,11 @@
                 </p>
             </div>
         </div>
-        <div class="status">
-            <h3>*נכון לרגע זה ישנם חניות פנויות במערכת!</h3>
+        <div class="now-count-status" v-if="nowCount >= nowMinimumToShow">
+            <h3>*נכון לרגע זה ישנם {{nowCount}} חניות פנויות במערכת!</h3>
+        </div>
+        <div class="today-count-status" v-if="todayCount >= todayMinimumToShow && nowCount < nowMinimumToShow">
+            <h3>*החל מהבוקר {{todayCount}} חניות פנויות דווחו</h3>
         </div>
         <hr>
     </div>
@@ -43,12 +46,40 @@
 
 <script>
     import image from "../assets/map.png"
+    const config = require('config');
 
     export default {
-        data () {
+        data() {
             return {
-                msg: 'Home!',
-                image: image
+                image: image,
+                nowCount: 0,
+                todayCount: 0,
+                nowMinimumToShow: 2,
+                todayMinimumToShow: 10
+            }
+        },
+        mounted() {
+            setTimeout(()=>{
+                this.showCounts();
+            }, 0);
+        },
+        methods: {
+            async fetchServer(url) {
+                const response = await fetch(url, {
+                    method: 'post',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({"Address": {"CityId": 1}})
+                });
+                response.json = await response.json();
+
+                if(response.ok) {
+                    return response.json.data[0].count;
+                }
+                return 0;
+            },
+            async showCounts() {
+                this.nowCount = await this.fetchServer(`${config.apiUrl}/chance-now-count`);
+                this.todayCount = await this.fetchServer(`${config.apiUrl}/chance-today-count`);
             }
         }
     }
@@ -77,10 +108,7 @@
     .home {
         direction: rtl;
     }
-    .home p.text, .status h3 {
+    .home p.text, .now-count-status h3, .today-count-status h3 {
         text-align: right;
-    }
-    .status {
-        display: none;
     }
 </style>
