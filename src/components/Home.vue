@@ -15,7 +15,7 @@
                 <h3>יתרונות המערכת</h3>
                 <p class="text">
                     <ul>
-                        <li>ניתן לראות על גבי המפה את מיקומם של החניות שמתפנות או אלה שעומדות להתפנה בקרוב</li>
+                        <li>ניתן לראות על גבי המפה את מיקומן של החניות שמתפנות או אלה שעומדות להתפנות בקרוב</li>
                         <li>ניתן לנווט לחניה הרצויה</li>
                         <li>אין צורך בקבוצות חניה ווצאפ המרובות</li>
                     </ul>
@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="now-count-status" v-if="nowCount >= nowMinimumToShow">
-            <h3>*נכון לרגע זה ישנם {{nowCount}} חניות פנויות במערכת!</h3>
+            <h3>*נכון לרגע זה ישנן {{nowCount}} חניות פנויות במערכת!</h3>
         </div>
         <div class="today-count-status" v-if="todayCount >= todayMinimumToShow && nowCount < nowMinimumToShow">
             <h3>*החל מהבוקר {{todayCount}} חניות פנויות דווחו</h3>
