@@ -38,7 +38,7 @@
             <h3>*נכון לרגע זה ישנן {{nowCount}} חניות פנויות במערכת!</h3>
         </div>
         <div class="today-count-status" v-if="todayCount >= todayMinimumToShow && nowCount < nowMinimumToShow">
-            <h3>*החל מהבוקר {{todayCount}} חניות פנויות דווחו</h3>
+            <h3>*החל מהבוקר דווחו {{todayCount}} חניות</h3>
         </div>
         <hr>
     </div>
@@ -59,6 +59,7 @@
             }
         },
         mounted() {
+            fetch(`${config.authUrl}/wakeup`);
             setTimeout(()=>{
                 this.showCounts();
             }, 0);

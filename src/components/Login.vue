@@ -51,6 +51,11 @@
                 password : ""
             }
         },
+        mounted() {
+            // wake up free dyno servers
+            fetch(`${config.authUrl}/wakeup`);
+            fetch(`${config.apiUrl}/wakeup`);
+        },
         methods : {
             handleSubmit(e){
                 e.preventDefault()

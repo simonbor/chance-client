@@ -44,11 +44,17 @@
 </template>
 
 <script>
+    const config = require('config');
     export default {
         data () {
             return {
                 msg: 'Home!'
             }
+        },
+        mounted() {
+            // wake up free dyno servers
+            fetch(`${config.authUrl}/wakeup`);
+            fetch(`${config.apiUrl}/wakeup`);
         }
     }
 </script>
