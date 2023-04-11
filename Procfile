@@ -1,1 +1,1 @@
-web: chance-client
+web: npm run build
