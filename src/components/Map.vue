@@ -37,7 +37,7 @@
     data() {
       return {
         platform: null,
-        apikey: "jMoxIpkNNj0aZNL1xVxGqPnsZ9sYLG7Zw5Q1FMRfd1s"
+        apikey: "LdLTg5x1C7ZrQwpfHlYB6NwfpX2mQGEp5uxVH8AJNBU"
       };
     },
     async mounted() {
