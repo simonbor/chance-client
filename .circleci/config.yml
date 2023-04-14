@@ -3,7 +3,7 @@ jobs:
   build-and-test:
     working_directory: ~/chance-client
     docker:
-      - image: cimg/node:17.4.0
+      - image: circleci/node:latest
     steps:
       - checkout
       - run:
